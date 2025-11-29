@@ -49,7 +49,7 @@ jobs:
           patchelf --set-rpath "$LD_RPATH" --set-interpreter "$LD_FILE" box64
           
           cd /data/data/com.winlator/files/rootfs/
-          tar -I 'zstd -T8 -9' /tmp/box64-${{ github.event.inputs.inputBox64CunstomTag }}.tzst ./usr/local/bin/box64
+          tar -I 'zstd -T8 -9' -cf /tmp/box64-${{ github.event.inputs.inputBox64CunstomTag }}.tzst ./usr/local/bin/box64
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
