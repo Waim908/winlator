@@ -1,0 +1,59 @@
+name: Build Box64
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      inputBox64Version:
+        description: "输入Box64版本："
+        required: true
+        default: "0.3.6"
+      inputBox64CunstomTag:
+        description: "输入自定义tag名字："
+        required: true
+        default: "0.3.6.03.1"
+
+jobs:
+  ubuntu:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Build Box64
+        run: |
+          sudo apt install build-essential
+          
+          export CFLAGS="-O3 -marh=armv8-a -mutune=generic -flto=auto"
+          export CXXFLAGS="-O3 -marh=armv8-a -mutune=generic -flto=auto"
+          export LDFLAGS="-O3 -flto=auto"
+
+          export LD_RPATH=/data/data/com.winlator/files/rootfs/usr/lib
+          export LD_FILE=$LD_RPATH/ld-linux-aarch64.so.1
+
+          sudo mkdir /data
+          sudo chmod 777 /data
+          mkdir -p /data/data/com.termux/files/rootfs/usr/local
+          git clone -b ${box64Ver} https://github.com/ptitSeb/box64 || exit 1
+          cd box64
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_INSTALL_PREFIX=/data/data/com.winlator/files/rootfs/usr/local -DCMAKE_BUILD_TYPE=RelWithDebInfo -DARM64=on -DARM_DYNAREC=on -DBAD_SIGNAL=on || exit 1
+          make -j$(nproc) || exit 1
+          make install || exit 1
+          
+          cd /data/data/com.winlator/files/rootfs/usr/local/bin
+          patchelf --set-rpath "$LD_RPATH" --set-interpreter "$LD_FILE" box64
+          
+          cd /data/data/com.winlator/files/rootfs/
+          tar -I 'zstd -T8 -9' /tmp/box64-${{ github.event.inputs.inputBox64CunstomTag }}.tzst ./usr/local/bin/box64
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: box64-${{ github.event.inputs.inputBox64CunstomTag }}
+          draft: false
+          prerelease: false
+          tag_name: box64-${{ github.event.inputs.inputBox64CunstomTag }}
+          body: |
+            Tag => box64-${{ github.event.inputs.inputBox64CunstomTag }}
+            Branch => box64-${{ github.event.inputs.inputBox64Version }}
