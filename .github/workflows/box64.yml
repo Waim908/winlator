@@ -61,3 +61,7 @@ jobs:
           body: |
             Tag => box64-${{ github.event.inputs.inputBox64CunstomTag }}
             Branch => box64-${{ github.event.inputs.inputBox64Version }}
+          files: |
+            /tmp/box64-${{ github.event.inputs.inputBox64CunstomTag }}.tzst
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
