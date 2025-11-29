@@ -41,7 +41,7 @@ jobs:
 
           mkdir build
           cd build
-          cmake .. -DCMAKE_INSTALL_PREFIX=/data/data/com.winlator/files/rootfs/usr/local -DCMAKE_BUILD_TYPE=RelWithDebInfo -DARM64=on -DARM_DYNAREC=on -DBAD_SIGNAL=on || exit 1
+          cmake .. -DCMAKE_INSTALL_PREFIX=/data/data/com.winlator/files/rootfs/usr/local -DCMAKE_BUILD_TYPE=RelWithDebInfo -DARM64=on -DARM_DYNAREC=on -DBAD_SIGNAL=on -DWINLATOR_GLIBC=on || exit 1
           make -j$(nproc) || exit 1
           make install || exit 1
           
