@@ -2,6 +2,8 @@
 	<img src="logo.png" width="376" height="128" alt="Winlator Logo" />
 </p>
 
+# 此项目是基于hostei的改版进行修改，同时作为原版winlator的修改和补全，如果你不喜欢分叉版本可以去下载rootfs来完善原版winlator的体验
+
 # Winlator
 
 Winlator is an Android application that lets you to run Windows (x86_64) applications with Wine and Box86/Box64.
