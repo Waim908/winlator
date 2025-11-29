@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Build Box64
         run: |
-          sudo apt install build-essential
+          sudo apt install -y build-essential
           
           export CFLAGS="-O3 -marh=armv8-a -mutune=generic -flto=auto"
           export CXXFLAGS="-O3 -marh=armv8-a -mutune=generic -flto=auto"
@@ -33,7 +33,7 @@ jobs:
           sudo mkdir /data
           sudo chmod 777 /data
           mkdir -p /data/data/com.termux/files/rootfs/usr/local
-          git clone -b ${box64Ver} https://github.com/ptitSeb/box64 || exit 1
+          git clone -b ${{ github.event.inputs.inputBox64Version }} https://github.com/ptitSeb/box64 || exit 1
           cd box64
           mkdir build
           cd build
