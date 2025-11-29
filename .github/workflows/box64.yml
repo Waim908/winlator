@@ -23,9 +23,9 @@ jobs:
         run: |
           sudo apt install -y build-essential
           
-          export CFLAGS="-O3 -march=armv8-a -mtune=generic -flto=auto"
-          export CXXFLAGS="-O3 -march=armv8-a -mtune=generic -flto=auto"
-          export LDFLAGS="-O3 -flto=auto"
+          export CFLAGS="-O3 -march=armv8-a -mtune=generic -flto=auto -s"
+          export CXXFLAGS="-O3 -march=armv8-a -mtune=generic -flto=auto -s"
+          export LDFLAGS="-O3 -flto=auto -s"
 
           export LD_RPATH=/data/data/com.winlator/files/rootfs/usr/lib
           export LD_FILE=$LD_RPATH/ld-linux-aarch64.so.1
