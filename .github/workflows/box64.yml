@@ -9,7 +9,7 @@ on:
       inputBox64Version:
         description: "输入Box64版本："
         required: true
-        default: "0.3.6"
+        default: "v0.3.6"
       inputBox64CunstomTag:
         description: "输入自定义tag名字："
         required: true
