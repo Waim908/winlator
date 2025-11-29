@@ -35,6 +35,10 @@ jobs:
           mkdir -p /data/data/com.termux/files/rootfs/usr/local
           git clone -b ${{ github.event.inputs.inputBox64Version }} https://github.com/ptitSeb/box64 || exit 1
           cd box64
+
+          sed -i 's|/usr|/data/data/com.winlator/files/rootfs/usr|g' CMakeLists.txt || exit 1
+          sed -i 's|/etc|/data/data/com.winlator/files/rootfs/usr/etc|g' CMakeLists.txt || exit 1
+
           mkdir build
           cd build
           cmake .. -DCMAKE_INSTALL_PREFIX=/data/data/com.winlator/files/rootfs/usr/local -DCMAKE_BUILD_TYPE=RelWithDebInfo -DARM64=on -DARM_DYNAREC=on -DBAD_SIGNAL=on || exit 1
