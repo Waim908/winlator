@@ -1,0 +1,23 @@
+name: build mesa driver (no kgsl patch)
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      inputMesaBranch:
+        description: "输入Mesa驱动版本"
+        required: true
+        default: "mesa-25.1.0"
+
+jobs:
+  BCC:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: get resources and apply patch
+        id: getRes
+        run: |
+          wget https://github.com/Waim908/BCC/releases/download/wlt-bcc-latest/wlt-bcc.tar.xz || exit 1
+          tar xvf wlt-bcc.tar.xz -C /tmp
+
