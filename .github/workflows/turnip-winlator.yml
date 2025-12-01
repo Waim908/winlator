@@ -27,6 +27,7 @@ jobs:
           wget https://raw.githubusercontent.com/Waim908/winlator/winlator-custom/.github/workflows/turnip-winlator.sh
           sudo cp -r -p  turnip-winlator.sh /tmp/archlinux/bin/
           sudo chmod 777 /tmp/archlinux/bin/turnip-winlator.sh
+          cd /tmp
           sudo mount --bind /proc archlinux/proc
           sudo mount --bind /sys archlinux/sys
           sudo mount --bind /dev archlinux/dev
