@@ -26,7 +26,6 @@ meson setup builddir \
 	-Dgles1=disabled \
 	-Dgles2=disabled \
 	-Dglvnd=disabled \
-	-Dglx=xlib \
 	-Dllvm=disabled \
 	-Dgallium-extra-hud=true \
 	-Dgallium-vdpau=disabled \
