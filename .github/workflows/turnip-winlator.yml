@@ -1,4 +1,4 @@
-name: build winlator orignal version mesa driver 
+name: build winlator orignal version mesa driver
 
 permissions:
   contents: write

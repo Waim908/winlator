@@ -14,7 +14,6 @@ git clone https://github.com/brunodev85/mesa3d-custom.git
 cd mesa3d-custom
 cd $1 || exit 1
 
-# 真的只有一个动态库和share相关配置✅
 meson setup builddir \
 	--strip \
 	-Dprefix=/data/data/com.winlator/files/rootfs/usr/ \
@@ -32,7 +31,7 @@ meson setup builddir \
 	-Dgallium-vdpau=disabled \
 	-Dgbm=disabled \
 	-Dvulkan-layers= \
-	-Dfreedreno-kmds=kgsl \
+	-Dfreedreno-kmds=msm \
 	-Dlibunwind=disabled \
 	-Dvalgrind=disabled \
 	-Dmicrosoft-clc=disabled \
