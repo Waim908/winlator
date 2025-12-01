@@ -23,10 +23,10 @@ jobs:
         id: getRes
         run: |
           wget https://github.com/Waim908/BCC/releases/download/wlt-bcc-latest/wlt-bcc.tar.xz || exit 1
-          sudo tar xvf wlt-bcc.tar.xz -C /tmp
-          cd /tmp/archlinux/bin
+          sudo tar -xf wlt-bcc.tar.xz -C /tmp
           wget https://raw.githubusercontent.com/Waim908/winlator/winlator-custom/.github/workflows/turnip-winlator.sh
-          sudo chmod 777 turnip-winlator.sh
+          sudo cp -r -p  turnip-winlator.sh /tmp/archlinux/bin/
+          sudo chmod 777 /tmp/archlinux/bin/turnip-winlator.sh
           sudo mount --bind /proc archlinux/proc
           sudo mount --bind /sys archlinux/sys
           sudo mount --bind /dev archlinux/dev
