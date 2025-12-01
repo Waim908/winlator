@@ -9,7 +9,7 @@ on:
       inputMesaVer:
         description: "输入Mesa驱动版本"
         required: true
-        default: "mesa-25.1.0"
+        default: "turnip-25.1.0"
       inputCustomTag:
         description: "输入customTag"
         required: true

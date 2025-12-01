@@ -10,7 +10,7 @@ pip install mako --break-system-package
 pip install PyYAML --break-system-package
 pip install meson --break-system-package
 cd /tmp
-git clone https://github.com/brunodev85/mesa3d-custom
+git clone https://github.com/brunodev85/mesa3d-custom.git
 cd mesa3d-custom
 cd $1 || exit 1
 
