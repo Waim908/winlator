@@ -1,4 +1,4 @@
-name: build mesa driver (no kgsl patch)
+name: build winlator orignal version mesa driver 
 
 permissions:
   contents: write
