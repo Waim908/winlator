@@ -14,6 +14,8 @@ git clone https://github.com/brunodev85/mesa3d-custom.git
 cd mesa3d-custom
 cd $1 || exit 1
 
+pacman -S --noconfirm --needed xorg-xrandr
+
 meson setup builddir \
 	--strip \
 	-Dprefix=/data/data/com.winlator/files/rootfs/usr/ \
