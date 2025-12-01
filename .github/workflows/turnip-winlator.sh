@@ -8,19 +8,20 @@ export LD_FILE=$LD_RPATH/ld-linux-aarch64.so.1
 mkdir -p /data/data/com.winlator/files/rootfs/usr/
 pip install mako --break-system-package
 pip install PyYAML --break-system-package
-pip install meson --break-system-package
+# pip install meson --break-system-package
 cd /tmp
 git clone https://github.com/brunodev85/mesa3d-custom.git
 cd mesa3d-custom
 cd $1 || exit 1
 
-# 如果这个环境连dri都不支持就换成xlib
+# 真的只有一个动态库和share相关配置✅
 meson setup builddir \
 	--strip \
 	-Dprefix=/data/data/com.winlator/files/rootfs/usr/ \
 	-Dbuildtype=release \
 	-Dplatforms=x11 \
 	-Dgallium-drivers= \
+	-Dtools= \
 	-Dvulkan-drivers=freedreno \
 	-Degl=disabled \
 	-Dgles1=disabled \
@@ -30,7 +31,7 @@ meson setup builddir \
 	-Dgallium-extra-hud=true \
 	-Dgallium-vdpau=disabled \
 	-Dgbm=disabled \
-	-Dvulkan-layers=device-select,overlay \
+	-Dvulkan-layers= \
 	-Dfreedreno-kmds=kgsl \
 	-Dlibunwind=disabled \
 	-Dvalgrind=disabled \
