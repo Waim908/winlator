@@ -14,7 +14,7 @@ git clone https://github.com/brunodev85/mesa3d-custom.git
 cd mesa3d-custom
 cd $1 || exit 1
 
-pacman -S --noconfirm --needed xorg-xrandr
+pacman -S --noconfirm --needed libxrandr
 
 meson setup builddir \
 	--strip \
