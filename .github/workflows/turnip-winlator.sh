@@ -20,13 +20,13 @@ meson setup builddir \
 	-Dprefix=/data/data/com.winlator/files/rootfs/usr/ \
 	-Dbuildtype=release \
 	-Dplatforms=x11 \
-	-Dgallium-drivers='' \
+	-Dgallium-drivers= \
 	-Dvulkan-drivers=freedreno \
 	-Degl=disabled \
 	-Dgles1=disabled \
 	-Dgles2=disabled \
-	-Dglvnd=enabled \
-	-Dglx=dri \
+	-Dglvnd=disabled \
+	-Dglx=xlib \
 	-Dllvm=disabled \
 	-Dgallium-extra-hud=true \
 	-Dgallium-vdpau=disabled \
