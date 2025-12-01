@@ -6,10 +6,14 @@ permissions:
 on:
   workflow_dispatch:
     inputs:
-      inputMesaBranch:
+      inputMesaVer:
         description: "输入Mesa驱动版本"
         required: true
         default: "mesa-25.1.0"
+      inputCustomTag:
+        description: "输入customTag"
+        required: true
+        default: "25.1.0.03.1"
 
 jobs:
   BCC:
@@ -20,4 +24,23 @@ jobs:
         run: |
           wget https://github.com/Waim908/BCC/releases/download/wlt-bcc-latest/wlt-bcc.tar.xz || exit 1
           tar xvf wlt-bcc.tar.xz -C /tmp
+          cd /tmp/archlinux/
+          wget https://raw.githubusercontent.com/Waim908/winlator/winlator-custom/.github/workflows/turnip-winlator.sh
+          chmod +x turnip-winlator.sh
+          chroot /tmp/archlinux /turnip-winlator.sh ${{ github.event.inputs.inputMesaVer }} ${{ github.event.inputs.inputCustomTag }} || exit 1
+          # /tmp/turnip-$2.tzst
 
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: turnip-${{ github.event.inputs.inputCustomTag }}
+          draft: false
+          prerelease: false
+          tag_name: turnip-${{ github.event.inputs.inputCustomTag }}
+          body: |
+            Tag => turnip-${{ github.event.inputs.inputCustomTag}}
+            Winlator turnip version => turnip-${{ github.event.inputs.inputMesaVer }}
+          files: |
+            /tmp/archlinux/tmp/turnip-${{ github.event.inputs.inputCustomTag }}.tzst
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
