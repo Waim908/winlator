@@ -30,7 +30,7 @@ meson setup builddir \
 	-Dllvm=disabled \
 	-Dgallium-extra-hud=true \
 	-Dgallium-vdpau=disabled \
-	-Dgbm=enabled \
+	-Dgbm=disabled \
 	-Dvulkan-layers=device-select,overlay \
 	-Dfreedreno-kmds=kgsl \
 	-Dlibunwind=disabled \
