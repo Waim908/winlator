@@ -23,11 +23,17 @@ jobs:
         id: getRes
         run: |
           wget https://github.com/Waim908/BCC/releases/download/wlt-bcc-latest/wlt-bcc.tar.xz || exit 1
-          tar xvf wlt-bcc.tar.xz -C /tmp
+          sudo tar xvf wlt-bcc.tar.xz -C /tmp
           cd /tmp/archlinux/
           wget https://raw.githubusercontent.com/Waim908/winlator/winlator-custom/.github/workflows/turnip-winlator.sh
           chmod +x turnip-winlator.sh
-          chroot /tmp/archlinux /turnip-winlator.sh ${{ github.event.inputs.inputMesaVer }} ${{ github.event.inputs.inputCustomTag }} || exit 1
+          sudo mount --bind /proc archlinux/proc
+          sudo mount --bind /sys archlinux/sys
+          sudo mount --bind /dev archlinux/dev
+          sudo chroot /tmp/archlinux /turnip-winlator.sh ${{ github.event.inputs.inputMesaVer }} ${{ github.event.inputs.inputCustomTag }} || exit 1
+          sudo umount -l archlinux/dev
+          sudo umount -l archlinux/sys
+          sudo umount -l archlinux/proc
           # /tmp/turnip-$2.tzst
 
       - name: Create Release
