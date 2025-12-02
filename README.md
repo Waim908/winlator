@@ -32,6 +32,10 @@ gplasync 2.7之前的版本需要声明变量```DXVK_GPLASYNCCACHE=1```
 
 ```版本号.1``` 代表正常vkd3d版本与原版vkd3d进行区分，通常高版本wine已经自带
 
+## wined3d
+
+```版本号.1``` 代表正常wined3d版本与原版wined3d进行区分
+
 ### turnip
 
 ```版本号.03.更新次数``` 03代表进行了O3编译优化处理
