@@ -2,9 +2,7 @@
 	<img src="logo.png" width="376" height="128" alt="Winlator Logo" />
 </p>
 
-# Winlator 908c （908 custom）
-
-# 此项目是基于hostei的改版进行修改（如果可以，单纯修改原版会在release进行单独的说明），同时作为原版winlator的修改和补全，如果你不喜欢分叉版本可以去下载rootfs来完善原版winlator的体验
+# ***此仓库不会提供修改版本的apk下载链接。***
 
 # 在线组件
 
@@ -93,4 +91,5 @@ This project has been in constant development since version 1.0, the current app
 - [DXVK sarek](https://github.com/pythonlover02/dxvk-Sarek)
 
 Special thanks to all the developers involved in these projects.<br>
+
 Thank you to all the people who believe in this project.
